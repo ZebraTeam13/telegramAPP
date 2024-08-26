@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tap to Earn</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        .button {
+            padding: 15px 30px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: green;
+        }
+        .points-display {
+            margin-top: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #007BFF;
+        }
+        .points-image {
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tap to Earn</h1>
+    <p>Click the button below to earn points!</p>
+    <button class="button" onclick="earnPoints()">Tap to Earn</button>
+
+    <div id="message" class="message"></div>
+    <div id="points-display" class="points-display"></div>
+    <img id="points-image" class="points-image" src="images/default.png" alt="Points Image">
+
+    <script>
+        let points = 0;
+
+        function earnPoints() {
+            points += 1;
+            document.getElementById('message').textContent = "You clicked the button! You've earned 1 point.";
+            document.getElementById('points-display').textContent = `Total Points: ${points}`;
+
+            const pointsImage = document.getElementById('points-image');
+            pointsImage.style.display = 'block';
+
+            // Change the image if points reach 10
+            if (points >= 10) {
+                pointsImage.src = 'images/reward.png';
+            }
+        }
+    </script>
+</body>
+</html>
